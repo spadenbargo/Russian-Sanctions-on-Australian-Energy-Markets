@@ -1,0 +1,224 @@
+
+\documentclass[letterpaper,10pt]{article}
+\usepackage[letterpaper]{geometry} % Importante para que respete el tamaño de papel
+\usepackage{array}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{empheq}
+\usepackage{csquotes}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{mathtools}
+\usepackage{url}
+\usepackage{array}
+\usepackage{gensymb}
+\usepackage{minted}
+\usepackage[thinlines]{easytable}
+\usepackage{appendix}
+\usepackage{wrapfig}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{setspace}
+\setstretch{1.25}
+\usepackage{multirow}
+\usepackage{hyperref}
+
+
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\makeatletter
+\newcommand*\@dblLabelI {}
+\newcommand*\@dblLabelII {}
+\newcommand*\@dblequationAux {}
+
+
+\usepackage{chngcntr}
+
+\counterwithin*{equation}{section}
+
+\def\@dblequationAux #1,#2,%
+    {\def\@dblLabelI{\label{#1}}\def\@dblLabelII{\label{#2}}}
+
+\newcommand*{\doubleequation}[3][]{%
+    \par\vskip\abovedisplayskip\noindent
+    \if\relax\detokenize{#1}\relax
+       \let\@dblLabelI\@empty
+       \let\@dblLabelII\@empty
+    \else % we assume here that the optional argument
+          % has the required shape A,B
+       \@dblequationAux #1,%
+    \fi
+    \makebox[0.5\linewidth-1.5em]{%
+     \hspace{\stretch2}%
+     \makebox[0pt]{$\displaystyle #2$}%
+     \hspace{\stretch1}%
+    }%
+    \makebox[0.5\linewidth-1.5em]{%
+     \hspace{\stretch1}%
+     \makebox[0pt]{$\displaystyle #3$}%
+     \hspace{\stretch2}%
+    }%
+    \makebox[3em][r]{(%
+  \refstepcounter{equation}\theequation\@dblLabelI, 
+  \refstepcounter{equation}\theequation\@dblLabelII)}%
+  \par\vskip\belowdisplayskip
+}
+\makeatother
+
+
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+\newcommand*{\addheight}[2][.5ex]{%
+  \raisebox{0pt}[\dimexpr\height+(#1)\relax]{#2}%
+}
+
+
+\newcommand{\multicolinterrupt}[1]{% Stuff to span both rows
+\end{multicols}
+#1
+\begin{multicols}{2}
+}
+
+\makeatletter
+\AtBeginEnvironment{minted}{\dontdofcolorbox}
+\def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+\makeatother
+
+\renewcommand{\thesection}{\arabic{section}}
+% \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\roman{subsubsection}}
+
+
+
+
+
+\special{papersize=8.5in,11in}
+
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE The University of Sydney}\\[1.5cm] % Name of your university/college
+\vspace{2.5cm}
+\textsc{\Large ECMT3150 Econometrics of Financial Markets}\\[0.5cm] % Major heading such as course name
+\textsc{\large S1C 2022}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \LARGE \bfseries Impact of Russian Sanctions on International and Domestic Energy Markets}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+%Evan Mak Jhen Wei \hspace{1cm}
+
+\begin{minipage}{0.8\textwidth}
+\vspace{0.5cm}
+\begin{center}
+
+\textsc{\large Group 1 - The Sanctioneers}\\
+\end{center}
+\begin{flushleft} \large
+\begin{align*}
+    \textsc{Aidan Flanagan - 500500516}\\
+    \textsc{Alice Deng - 490468734}\\
+    \textsc{Baden Spargo - 490431111}\\
+    \textsc{Matthew Tonkli - 500506677}\\
+    \textsc{Mitchell Rae - 500499601}\\
+    \textsc{Utsav Mitra - 490182143}\\
+\end{align*}
+
+\vspace{2cm}
+\end{flushleft}
+\end{minipage}
+%~
+%\begin{minipage}{0.4\textwidth}
+%\begin{flushright} \large
+%\emph{Profesor:} \\
+%Dr. Ra\'{u}l \textsc{Hern\'{a}ndez} % Supervisor's Name
+%\end{flushright}
+%\end{minipage}\\[4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage} 
+
+\tableofcontents
+\clearpage
+
+\input{Parts/Introduction}
+\input{Parts/Literature Review}
+\input{Parts/Data-Description}
+\input{Parts/NEM-Analysis}
+\input{Parts/GARCH}
+\input{Parts/Cointegration}
+\input{Parts/Conclusion}
+
+\clearpage
+%---------------------- Page11: References ----------------------------
+% \begin{thebibliography}{9}
+
+ 
+% \end{thebibliography}
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{plain}
+\bibliography{reportbib}
+\clearpage
+\end{document}
